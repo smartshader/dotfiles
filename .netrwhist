@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/imad/Documents/edx/CS101.1x/week2/fortune'
+let g:netrw_dirhist_2='/Users/imad'
+let g:netrw_dirhist_3='/Users/imad/Documents/edx/CS101.1x/week2/fortune'
+let g:netrw_dirhist_4='/Users/imad/.vim'
+let g:netrw_dirhist_5='/Users/imad/Documents/edx/CS101.1x/week2/fortune'
+let g:netrw_dirhist_6='/Users/imad/Documents/edx/CS101.1x/week2'
