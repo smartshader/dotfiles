@@ -2,7 +2,7 @@
 "" NeoBundle core
 "*****************************************************************************
 " Resolve tmp folder access issues
-set shell=/bin/sh
+set shell=/bin/bash
 
 if has('vim_starting')
   set nocompatible               " Be iMproved
@@ -11,9 +11,9 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-let vundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
+let neobundle_readme=expand('~/.vim/bundle/neobundle.vim/README.md')
 
-if !filereadable(vundle_readme)
+if !filereadable(neobundle_readme)
   echo "Installing NeoBundle..."
   echo ""
   silent !mkdir -p ~/.vim/bundle
@@ -41,6 +41,8 @@ NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/CSApprox'
 NeoBundle "scrooloose/nerdcommenter"
 NeoBundle "sdustinh/vim-taglist"
+NeoBundle "godlygeek/tabular"
+NeoBundle "ervandew/supertab"
 
 "" Snippets
 NeoBundle "MarcWeber/vim-addon-mw-utils"
@@ -208,7 +210,7 @@ set titlestring=%F
 set statusline=%F%m%r%h%w%=(%{&ff}/%Y)\ (line\ %l\/%L,\ col\ %c)\ %{fugitive#statusline()}
 
 let g:airline_theme = 'powerlineish'
-let g:airline_enable_branch = 1
+let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -233,7 +235,7 @@ let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let NERDTreeShowBookmarks=0
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 20
+let g:NERDTreeWinSize = 35
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
@@ -336,7 +338,7 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
 
 " vim-airline
-let g:airline_enable_syntastic = 1
+let g:airline#extensions#syntastic#enabled = 1
 
 "" Remove trailing whitespace on <leader>S
 nnoremap <leader>:call TrimWhiteSpace()<cr>:let @/=''<CR>
@@ -352,7 +354,7 @@ vmap <C-c> :w !pbcopy<CR><CR>
 
 "" Buffer nav
 nmap <S-p> :bp<CR>
-nmap <S-o> :bn<CR>
+""nmap <S-o> :bn<CR>
 noremap ,z :bp<CR>
 noremap ,q :bp<CR>
 noremap ,x :bn<CR>
@@ -417,6 +419,9 @@ let g:rubycomplete_rails = 1
 
 au BufNewFile,BufRead *.rb,*.rbw,*.gemspec set filetype=ruby
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+
+" Tmux config
+autocmd VimEnter,VimLeave * silent !tmux set status
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
