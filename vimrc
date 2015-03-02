@@ -44,6 +44,11 @@ NeoBundle "sdustinh/vim-taglist"
 NeoBundle "godlygeek/tabular"
 NeoBundle "ervandew/supertab"
 
+"" Session management
+NeoBundle "xolox/vim-session"
+NeoBundle "xolox/vim-misc"
+
+
 "" Snippets
 NeoBundle "MarcWeber/vim-addon-mw-utils"
 NeoBundle "tomtom/tlib_vim"
@@ -422,6 +427,10 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
 " Tmux config
 autocmd VimEnter,VimLeave * silent !tmux set status
+
+" xolox session config
+let g:session_autoload = 'yes'
+let g:session_autosave = 'no'
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
