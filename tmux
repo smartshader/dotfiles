@@ -19,6 +19,7 @@ set -g status-left "#[fg=Green]#(whoami)#[fg=white]::#[fg=blue] \
 (hostname - s)#[fg=white]::##[fg=yellow]#(curl ipecho.net/plain;echo)"
 
 set -g default-terminal "screen-256color"
+#set -g default-terminal "xterm"
 set -g history-limit 10000
 
 bind | split-window -h
