@@ -16,6 +16,7 @@ set -g status-interval 5
 set -g status-left-length 90 
 set -g status-right-length 60 
 set -g status-left "#[fg=Green]#(whoami)#[fg=white]::#[fg=blue] \
+(hostname - s)#[fg=white]::##[fg=yellow]#(curl ipecho.net/plain;echo)"
 
 set -g default-terminal "screen-256color"
 set -g history-limit 10000
@@ -24,7 +25,6 @@ bind | split-window -h
 bind - split-window -v
 
 
-(hostname - s)#[fg=white]::##[fg=yellow]#(curl ipecho.net/plain;echo)"
 
 
 set -g status-justify left 
@@ -40,12 +40,12 @@ bind -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"
 
 
 # bind tmux change pane keys
-bind-key -n C-j select-pane -D
-bind-key -n C-k select-pane -U
-bind-key -n C-l select-pane -R
-bind-key -n C-h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+bind-key h select-pane -L
 
-bind-key -n C-S-l resize-pane -L 5
-bind-key -n C-S-h resize-pane -R 5
-bind-key -n C-S-j resize-pane -D 5
-bind-key -n C-S-k resize-pane -U 5
+bind-key L resize-pane -L 5
+bind-key H resize-pane -R 5
+bind-key J resize-pane -D 5
+bind-key K resize-pane -U 5

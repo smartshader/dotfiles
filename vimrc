@@ -45,6 +45,9 @@ NeoBundle "godlygeek/tabular"
 NeoBundle "ervandew/supertab"
 NeoBundle "tpope/vim-surround"
 NeoBundle "christoomey/vim-tmux-navigator"
+NeoBundle "tpope/vim-unimpaired"
+NeoBundle "tpope/vim-rake"
+NeoBundle "tpope/vim-projectionist"
 
 "" YAML
 NeoBundle "ingydotnet/yaml-vim"
@@ -77,8 +80,6 @@ NeoBundle "Yggdroot/indentLine"
 
 
 "" Javascript Bundle
-NeoBundle "scrooloose/syntastic"
-
 
 "" HTML Bundle
 NeoBundle 'amirh/HTML-AutoCloseTag'
@@ -100,6 +101,9 @@ NeoBundle "majutsushi/tagbar"
 
 "" C/C++ Bundle
 NeoBundle "vim-scripts/OmniCppComplete"
+
+"" colorschemes
+NeoBundle "flazz/vim-colorschemes"
 
 
 call neobundle#end()
@@ -171,7 +175,6 @@ set number
 
 let no_buffers_menu=1
 highlight BadWhitespace ctermbg=red guibg=red
-colorscheme molokai
 
 set mousemodel=popup
 set t_Co=256
@@ -199,6 +202,8 @@ endif
 if &term =~ '256color'
   set t_ut=
 endif
+
+colorscheme hybrid
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -433,11 +438,6 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
 " Tmux config
 autocmd VimEnter,VimLeave * silent !tmux set status
-
-" xolox session config
-"function SaveSess()
-	"if 
-"endfunction
 
 let g:session_autoload = 'yes'
 let g:session_autosave = 'no'
