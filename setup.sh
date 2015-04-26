@@ -7,11 +7,12 @@ fi
 
 if [ ! -h ~/.vimrc ]
 then
-	ln -s dotfiles/vimrc ../.vimrc
-	ln -s dotfiles/tmux ../.tmux.conf
+	ln -s .dotfiles/vimrc ../.vimrc
+	ln -s .dotfiles/tmux ../.tmux.conf
 fi
 
 if ! grep 'alias tmux' ~/.bashrc -q
 then
 	echo "alias tmux='tmux -2'" >> ~/.bashrc
+	echo "alias tmux='tmux -2'" >> ~/.zshrc
 fi

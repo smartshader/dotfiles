@@ -300,9 +300,16 @@ set autoread
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
+"" Rake
+nnoremap <silent> ,rt :!clear; bundle exec rake test<CR>
+
 "" Split
 noremap <Leader>h :split<CR>
 noremap <Leader>v :vsplit<CR>
+nnoremap <silent> ,iv :vertical resize +5<CR>
+nnoremap <silent> ,ih :resize +5<CR>
+nnoremap <silent> ,dv :vertical resize -5<CR>
+nnoremap <silent> ,dh :resize -5<CR>
 
 "" Quicker window movement
 nnoremap <C-j> <C-w>j
