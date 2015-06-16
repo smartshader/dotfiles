@@ -48,6 +48,7 @@ NeoBundle "christoomey/vim-tmux-navigator"
 NeoBundle "tpope/vim-unimpaired"
 NeoBundle "tpope/vim-rake"
 NeoBundle "tpope/vim-projectionist"
+NeoBundle "vimtaku/hl_matchit.vim"
 
 "" YAML
 NeoBundle "ingydotnet/yaml-vim"
@@ -450,6 +451,7 @@ let g:session_autoload = 'yes'
 let g:session_autosave = 'no'
 
 "autocmd VimLeave * call SaveSess()
+runtime macros/matchit.vim
 
 " vim tmux plugin
 
