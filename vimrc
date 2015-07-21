@@ -106,6 +106,8 @@ NeoBundle "vim-scripts/OmniCppComplete"
 "" colorschemes
 NeoBundle "flazz/vim-colorschemes"
 
+"" Doc
+NeoBundle 'KabbAmine/zeavim.vim'
 
 call neobundle#end()
 
@@ -379,9 +381,9 @@ vmap <C-c> :w !pbcopy<CR><CR>
 "" Buffer nav
 nmap <S-p> :bp<CR>
 ""nmap <S-o> :bn<CR>
-noremap ,z :bp<CR>
+"noremap ,z :bp<CR>
 noremap ,q :bp<CR>
-noremap ,x :bn<CR>
+"noremap ,x :bn<CR>
 noremap ,w :bn<CR>
 
 "" Close buffer
