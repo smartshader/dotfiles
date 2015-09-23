@@ -40,7 +40,7 @@ NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'vim-scripts/grep.vim'
 NeoBundle 'vim-scripts/CSApprox'
 NeoBundle "scrooloose/nerdcommenter"
-NeoBundle "sdustinh/vim-taglist"
+NeoBundle "vim-scripts/taglist.vim"
 NeoBundle "godlygeek/tabular"
 NeoBundle "ervandew/supertab"
 NeoBundle "tpope/vim-surround"
