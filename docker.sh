@@ -24,3 +24,6 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-
     -o /usr/local/bin/docker-compose
 
 sudo chmod +x /usr/local/bin/docker-compose
+
+# Fix elasticsearch virtual memory
+sudo sysctl -w vm.max_map_count=262144
