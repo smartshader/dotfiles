@@ -7,3 +7,6 @@ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/
 
 sudo apt update
 sudo apt install -y kubectl
+
+#sudo snap install kubectl --classic
+sudo snap install helm --classic
