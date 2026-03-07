@@ -1,3 +1,18 @@
+# auto-update dotfiles
+DOTFILES_DIR="$HOME/Projects/personal/dotfiles"
+if [[ -d "$DOTFILES_DIR/.git" ]]; then
+  (
+    cd "$DOTFILES_DIR"
+    git fetch origin main --quiet 2>/dev/null
+    LOCAL=$(git rev-parse HEAD 2>/dev/null)
+    REMOTE=$(git rev-parse origin/main 2>/dev/null)
+    if [[ "$LOCAL" != "$REMOTE" ]]; then
+      echo "\033[1;34m==>\033[0m Dotfiles update available, syncing..."
+      git pull --ff-only --quiet origin main && bash "$DOTFILES_DIR/bootstrap.sh"
+    fi
+  )
+fi
+
 # terminal colors (install ncurses-term)
 export TERM=xterm-256color
 
