@@ -50,7 +50,7 @@ case "$DISTRO" in
 esac
 
 # ── Set default shell to zsh ───────────────────────────────────────
-CURRENT_SHELL="$(getent passwd "$USER" | cut -d: -f7)"
+CURRENT_SHELL="$(dscl . -read /Users/"$USER" UserShell 2>/dev/null | awk '{print $2}' || getent passwd "$USER" | cut -d: -f7)"
 if [[ "$CURRENT_SHELL" != */zsh ]]; then
   info "Current shell is $CURRENT_SHELL, changing to zsh..."
   sudo chsh -s "$(command -v zsh)" "$USER"
@@ -76,6 +76,16 @@ fi
 # ── Install brew packages ─────────────────────────────────────────
 info "Installing brew packages from Brewfile..."
 brew bundle --file="$DOTFILES_DIR/Brewfile"
+
+# ── Install Rust stable toolchain ─────────────────────────────────
+if command -v rustup &>/dev/null; then
+  if ! rustup toolchain list | grep -q stable; then
+    info "Installing Rust stable toolchain..."
+    rustup toolchain install stable
+  else
+    info "Rust stable toolchain already installed"
+  fi
+fi
 
 # ── Stow dotfiles ─────────────────────────────────────────────────
 info "Stowing dotfiles..."
