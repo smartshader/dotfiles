@@ -83,9 +83,9 @@ export EDITOR="nvim"
 
 # os indicator for starship prompt
 if [[ "$(uname -s)" == "Darwin" ]]; then
-  export STARSHIP_OS="(osx)"
+  export STARSHIP_OSX="(osx)"
 else
-  export STARSHIP_OS="($(lsb_release -si 2>/dev/null | tr '[:upper:]' '[:lower:]' || echo linux))"
+  export STARSHIP_UBUNTU="($(lsb_release -si 2>/dev/null | tr '[:upper:]' '[:lower:]' || echo linux))"
 fi
 
 # tools
@@ -105,3 +105,5 @@ eval "$(direnv hook zsh)"
 
 # local secrets (not tracked in git)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+alias claude="/Users/imad/.claude/local/claude"
