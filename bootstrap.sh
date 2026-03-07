@@ -59,7 +59,7 @@ else
 fi
 
 # ── Install Homebrew ───────────────────────────────────────────────
-if ! command -v brew &>/dev/null; then
+if [[ ! -x /opt/homebrew/bin/brew && ! -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
   info "Installing Homebrew..."
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
