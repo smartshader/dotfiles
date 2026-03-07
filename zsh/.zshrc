@@ -124,5 +124,3 @@ eval "$(direnv hook zsh)"
 
 # local secrets (not tracked in git)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-alias claude="/Users/imad/.claude/local/claude"
