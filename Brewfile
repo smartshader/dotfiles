@@ -10,6 +10,6 @@ brew "llvm"
 brew "coreutils"
 brew "awscli"
 brew "aws-sam-cli"
-brew "google-cloud-sdk"
+cask "google-cloud-sdk" if OS.mac?
 
 cask "font-mononoki-nerd-font" if OS.mac?
