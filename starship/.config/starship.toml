@@ -1,5 +1,6 @@
-# Starship prompt configuration
-# https://starship.rs/config/
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
 
 format = """
 $directory\
@@ -18,5 +19,5 @@ symbol = " "
 style = "bold red"
 
 [character]
-success_symbol = "[❯](bold green)"
+success_symbol = "[➜](bold green)"
 error_symbol = "[❯](bold red)"
