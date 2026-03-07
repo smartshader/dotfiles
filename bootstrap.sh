@@ -16,8 +16,6 @@ if [[ "$OS" == "Linux" ]]; then
     DISTRO="debian"
   elif command -v dnf &>/dev/null; then
     DISTRO="fedora"
-  elif command -v pacman &>/dev/null; then
-    DISTRO="arch"
   fi
 elif [[ "$OS" == "Darwin" ]]; then
   DISTRO="macos"
@@ -31,14 +29,11 @@ info "Installing system prerequisites..."
 case "$DISTRO" in
   debian)
     sudo apt-get update -qq
-    sudo apt-get install -y -qq build-essential curl git
+    sudo apt-get install -y -qq build-essential curl git zsh ncurses-term
     ;;
   fedora)
     sudo dnf groupinstall -y "Development Tools"
-    sudo dnf install -y curl git
-    ;;
-  arch)
-    sudo pacman -S --needed --noconfirm base-devel curl git
+    sudo dnf install -y curl git zsh
     ;;
   macos)
     # Xcode CLI tools (provides git, etc.)
@@ -53,6 +48,15 @@ case "$DISTRO" in
     warn "Unknown distro, skipping system prerequisites"
     ;;
 esac
+
+# ── Set default shell to zsh ───────────────────────────────────────
+CURRENT_SHELL="$(getent passwd "$USER" | cut -d: -f7)"
+if [[ "$CURRENT_SHELL" != */zsh ]]; then
+  info "Current shell is $CURRENT_SHELL, changing to zsh..."
+  sudo chsh -s "$(command -v zsh)" "$USER"
+else
+  info "Shell is already zsh"
+fi
 
 # ── Install Homebrew ───────────────────────────────────────────────
 if ! command -v brew &>/dev/null; then
