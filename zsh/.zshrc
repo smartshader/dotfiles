@@ -33,6 +33,29 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$(brew --prefix nvm 2>/dev/null)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
 [ -s "$(brew --prefix nvm 2>/dev/null)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
 
+# git
+alias gs="git status"
+alias ga="git add ."
+alias gf="git fetch --all"
+alias gd="git diff"
+alias gm="git merge origin/main"
+
+function gc() {
+    git commit -m "$*"
+}
+
+function gl() {
+    local branch=$(git branch --show-current)
+    echo "Pulling from origin/$branch..."
+    git pull origin "$branch"
+}
+
+function gp() {
+    local branch=$(git branch --show-current)
+    echo "Pushing to origin/$branch..."
+    git push -u origin "$branch" "$@"
+}
+
 # neovim
 alias vim="nvim"
 alias vi="nvim"
