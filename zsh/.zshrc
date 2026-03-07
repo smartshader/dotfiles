@@ -65,3 +65,9 @@ export EDITOR="nvim"
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(starship init zsh)"
+
+# direnv (per-directory environment variables)
+eval "$(direnv hook zsh)"
+
+# local secrets (not tracked in git)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

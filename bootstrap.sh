@@ -80,7 +80,7 @@ brew bundle --file="$DOTFILES_DIR/Brewfile"
 # ── Stow dotfiles ─────────────────────────────────────────────────
 info "Stowing dotfiles..."
 
-STOW_PACKAGES=(zsh starship nvim)
+STOW_PACKAGES=(zsh starship nvim tmux git)
 
 # ghostty only on native macOS (not in VMs)
 if [[ "$OS" == "Darwin" ]]; then
@@ -108,4 +108,16 @@ if [[ ! -d "$ZSH_DIR/zsh-autosuggestions" ]]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions.git "$ZSH_DIR/zsh-autosuggestions"
 fi
 
+# ── tmux plugin manager ────────────────────────────────────────────
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+if [[ ! -d "$TPM_DIR" ]]; then
+  info "Installing tmux plugin manager (TPM)..."
+  git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
+fi
+
+# ── git global gitignore ───────────────────────────────────────────
+info "Configuring global gitignore..."
+git config --global core.excludesFile ~/.gitignore-global
+
 info "Done! Restart your shell or run: source ~/.zshrc"
+info "Run 'tmux' then press prefix + I to install tmux plugins"
