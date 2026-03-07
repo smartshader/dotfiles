@@ -76,6 +76,11 @@ if [[ ! -x /opt/homebrew/bin/brew && ! -x /home/linuxbrew/.linuxbrew/bin/brew ]]
   fi
 else
   info "Homebrew already installed"
+  if [[ "$OS" == "Darwin" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
 fi
 
 # ── Install brew packages ─────────────────────────────────────────
