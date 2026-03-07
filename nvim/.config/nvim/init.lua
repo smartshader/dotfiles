@@ -19,6 +19,8 @@ vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 8
 vim.opt.cursorline = true
+vim.api.nvim_set_hl(0, "LineNr", { fg = "Yellow" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "Yellow", bold = true })
 
 -- behavior
 vim.opt.mouse = "a"
