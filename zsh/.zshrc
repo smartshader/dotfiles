@@ -25,6 +25,7 @@ setopt share_history hist_ignore_dups hist_ignore_space
 # completion
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # setup brew
 if [[ -d /opt/homebrew ]]; then
@@ -114,6 +115,9 @@ alias o=orb
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(starship init zsh)"
+
+# zoxide (smarter cd)
+eval "$(zoxide init zsh --cmd cd)"
 
 # direnv (per-directory environment variables)
 eval "$(direnv hook zsh)"
