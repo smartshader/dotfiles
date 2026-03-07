@@ -8,5 +8,8 @@ brew "pnpm"
 brew "rustup"
 brew "llvm"
 brew "coreutils"
+brew "awscli"
+brew "aws-sam-cli"
+brew "google-cloud-sdk"
 
 cask "font-mononoki-nerd-font" if OS.mac?

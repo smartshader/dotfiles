@@ -125,6 +125,14 @@ if [[ ! -d "$TPM_DIR" ]]; then
   git clone https://github.com/tmux-plugins/tpm "$TPM_DIR"
 fi
 
+# ── Claude Code ───────────────────────────────────────────────────
+if ! command -v claude &>/dev/null; then
+  info "Installing Claude Code..."
+  curl -fsSL https://claude.ai/install.sh | bash
+else
+  info "Claude Code already installed"
+fi
+
 # ── git global gitignore ───────────────────────────────────────────
 info "Configuring global gitignore..."
 git config --global core.excludesFile ~/.gitignore-global
