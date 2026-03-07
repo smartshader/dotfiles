@@ -61,6 +61,13 @@ alias vim="nvim"
 alias vi="nvim"
 export EDITOR="nvim"
 
+# os indicator for starship prompt
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  export STARSHIP_OS="(osx)"
+else
+  export STARSHIP_OS="($(lsb_release -si 2>/dev/null | tr '[:upper:]' '[:lower:]' || echo linux))"
+fi
+
 # setup starship
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -3,10 +3,15 @@
 add_newline = true
 
 format = """
+$env_var\
 $directory\
 $git_branch\
 $git_status\
 $character"""
+
+[env_var.STARSHIP_OS]
+format = "[$env_value]($style) "
+style = "bold purple"
 
 [directory]
 truncation_length = 3
