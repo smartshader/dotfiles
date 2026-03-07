@@ -136,7 +136,7 @@ if [[ ! -d "$TPM_DIR" ]]; then
 fi
 
 # ── Claude Code ───────────────────────────────────────────────────
-if ! command -v claude &>/dev/null; then
+if [[ ! -x "$HOME/.local/bin/claude" && ! -x "$HOME/.claude/local/claude" ]]; then
   info "Installing Claude Code..."
   curl -fsSL https://claude.ai/install.sh | bash
 else
