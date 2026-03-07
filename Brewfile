@@ -11,7 +11,7 @@ brew "coreutils"
 brew "ripgrep"
 brew "fd"
 brew "zoxide"
-brew "awscli"
+brew "awscli" if OS.mac?
 brew "aws-sam-cli"
 cask "gcloud-cli" if OS.mac?
 
