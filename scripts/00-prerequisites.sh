@@ -3,7 +3,7 @@ info "Installing system prerequisites..."
 case "$DISTRO" in
   debian)
     sudo apt-get update -qq
-    sudo apt-get install -y -qq build-essential curl git zsh ncurses-term apt-transport-https gnupg unzip
+    sudo apt-get install -y -qq build-essential curl git zsh ncurses-term apt-transport-https gnupg unzip net-tools lsof
     if ! command -v aws &>/dev/null; then
       info "Installing AWS CLI v2..."
       curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
