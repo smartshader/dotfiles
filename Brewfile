@@ -11,6 +11,7 @@ brew "coreutils"
 brew "ripgrep"
 brew "fd"
 brew "uv"
+brew "just"
 brew "zoxide"
 brew "awscli" if OS.mac?
 brew "aws-sam-cli"
