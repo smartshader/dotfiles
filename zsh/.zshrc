@@ -25,8 +25,28 @@ export PATH="$HOME/.local/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# setup claude
-alias claude-mem='/home/imad/.bun/bin/bun "/home/imad/.claude/plugins/cache/thedotmack/claude-mem/10.5.2/scripts/worker-service.cjs"'
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# rust
+if command -v rustup &>/dev/null; then
+  export PATH="$(rustup which rustc 2>/dev/null | sed 's|/rustc$||'):$PATH"
+fi
+
+# llvm
+export PATH="$(brew --prefix llvm 2>/dev/null)/bin:$PATH"
+export LDFLAGS="-L$(brew --prefix llvm 2>/dev/null)/lib"
+export CPPFLAGS="-I$(brew --prefix llvm 2>/dev/null)/include"
+
+# coreutils
+export PATH="$(brew --prefix coreutils 2>/dev/null)/libexec/gnubin:$PATH"
+
+# claude-mem
+alias claude-mem='bun "$HOME/.claude/plugins/cache/thedotmack/claude-mem/$(ls -1 "$HOME/.claude/plugins/cache/thedotmack/claude-mem/" 2>/dev/null | sort -V | tail -1)/scripts/worker-service.cjs"'
 
 # setup nvm
 export NVM_DIR="$HOME/.nvm"
@@ -60,6 +80,13 @@ function gp() {
 alias vim="nvim"
 alias vi="nvim"
 export EDITOR="nvim"
+
+# tools
+alias ls="eza --icons=always"
+alias k=kubectl
+alias d=docker
+alias p=podman
+alias o=orb
 
 # setup starship
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
