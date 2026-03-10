@@ -49,9 +49,7 @@ case ":$PATH:" in
 esac
 
 # rust
-if command -v rustup &>/dev/null; then
-  export PATH="$(rustup which rustc 2>/dev/null | sed 's|/rustc$||'):$PATH"
-fi
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # llvm
 export PATH="$(brew --prefix llvm 2>/dev/null)/bin:$PATH"
