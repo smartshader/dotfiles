@@ -21,6 +21,12 @@ vim.opt.scrolloff = 8
 vim.opt.cursorline = true
 vim.api.nvim_set_hl(0, "LineNr", { fg = "Yellow" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "Yellow", bold = true })
+vim.api.nvim_set_hl(0, "NvimTreeGitNewIcon", { fg = "#a6e3a1", bold = true })
+vim.api.nvim_set_hl(0, "NvimTreeGitDirtyIcon", { fg = "#f9e2af", bold = true })
+vim.api.nvim_set_hl(0, "NvimTreeGitStagedIcon", { fg = "#89b4fa", bold = true })
+vim.api.nvim_set_hl(0, "NvimTreeGitDeletedIcon", { fg = "#f38ba8", bold = true })
+vim.api.nvim_set_hl(0, "NvimTreeGitRenamedIcon", { fg = "#cba6f7", bold = true })
+vim.api.nvim_set_hl(0, "NvimTreeGitIgnoredIcon", { fg = "#585b70" })
 
 -- behavior
 vim.opt.mouse = "a"
@@ -47,6 +53,25 @@ require("lazy").setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("nvim-tree").setup({
+        git = {
+          enable = true,
+        },
+        renderer = {
+          highlight_git = "all",
+          icons = {
+            git_placement = "after",
+            glyphs = {
+              git = {
+                unstaged = "M",
+                staged = "S",
+                untracked = "U",
+                deleted = "D",
+                renamed = "R",
+                ignored = "◌",
+              },
+            },
+          },
+        },
         view = {
           float = {
             enable = true,
@@ -89,6 +114,30 @@ require("lazy").setup({
     end,
   },
   {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup({
+        signs = {
+          add          = { text = "▎" },
+          change       = { text = "▎" },
+          delete       = { text = "_" },
+          topdelete    = { text = "‾" },
+          changedelete = { text = "~" },
+        },
+        on_attach = function(bufnr)
+          local gs = package.loaded.gitsigns
+          local function map(mode, l, r, desc)
+            vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
+          end
+          map("n", "<leader>gp", gs.preview_hunk, "Preview hunk")
+          map("n", "<leader>gr", gs.reset_hunk, "Reset hunk")
+          map("n", "]h", gs.next_hunk, "Next hunk")
+          map("n", "[h", gs.prev_hunk, "Previous hunk")
+        end,
+      })
+    end,
+  },
+  {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -114,6 +163,8 @@ vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>")
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>")
 vim.keymap.set("n", "<leader>q", "<cmd>q<cr>")
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>")
+vim.keymap.set("n", "<Tab>", "<cmd>bnext<cr>")
+vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<cr>")
 
 -- move selected lines up/down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
