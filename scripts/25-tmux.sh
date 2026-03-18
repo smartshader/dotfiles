@@ -8,6 +8,6 @@ fi
 "$TPM_DIR/bin/install_plugins"
 
 # Reload tmux config if running inside tmux
-if [[ -n "$TMUX" ]]; then
+if [[ -n "${TMUX:-}" ]]; then
   tmux source-file ~/.tmux.conf
 fi
