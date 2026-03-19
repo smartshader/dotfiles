@@ -95,6 +95,13 @@ alias ts="tmux list-sessions"
 alias ta="tmux attach -t"
 
 # aws
+function iot-endpoint() {
+    aws iot describe-endpoint --endpoint-type iot:Data-ATS --query endpointAddress --output text 2>/dev/null || {
+        echo "Error: AWS CLI not authenticated. Run 'aws sso login' or configure credentials first."
+        return 1
+    }
+}
+
 function ecr-login() {
     local account_id region
     account_id=$(aws sts get-caller-identity --query Account --output text 2>/dev/null) || {
