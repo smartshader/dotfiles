@@ -90,6 +90,10 @@ function gp() {
     git push -u origin "$branch" "$@"
 }
 
+# tmux
+alias ts="tmux list-sessions"
+alias ta="tmux attach -t"
+
 # neovim
 alias vim="nvim"
 alias vi="nvim"
