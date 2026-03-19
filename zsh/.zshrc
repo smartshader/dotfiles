@@ -94,6 +94,19 @@ function gp() {
 alias ts="tmux list-sessions"
 alias ta="tmux attach -t"
 
+# aws
+function ecr-login() {
+    local account_id region
+    account_id=$(aws sts get-caller-identity --query Account --output text 2>/dev/null) || {
+        echo "Error: AWS CLI not authenticated. Run 'aws sso login' or configure credentials first."
+        return 1
+    }
+    region=$(aws configure get region 2>/dev/null)
+    region=${region:-us-east-1}
+    echo "Logging into ECR: $account_id.dkr.ecr.$region.amazonaws.com"
+    aws ecr get-login-password --region "$region" | docker login --username AWS --password-stdin "$account_id.dkr.ecr.$region.amazonaws.com"
+}
+
 # neovim
 alias vim="nvim"
 alias vi="nvim"
