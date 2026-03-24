@@ -25,5 +25,6 @@ for script in "$DOTFILES_DIR"/scripts/[0-9]*.sh; do
   source "$script"
 done
 
-info "Done! Restart your shell or run: source ~/.zshrc"
+info "Sourcing ~/.zshrc..."
+source ~/.zshrc
 info "Run 'tmux' then press prefix + I to install tmux plugins"
