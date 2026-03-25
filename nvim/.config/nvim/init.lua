@@ -139,6 +139,25 @@ require("lazy").setup({
     end,
   },
   {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("bufferline").setup({
+        options = {
+          show_buffer_close_icons = false,
+          show_close_icon = false,
+          diagnostics = false,
+          always_show_bufferline = false,
+          indicator = { style = "icon", icon = "▎" },
+          separator_style = "slant",
+          offsets = { { filetype = "NvimTree", text = "Explorer", highlight = "Directory", separator = true } },
+          show_buffer_icons = false,
+        },
+      })
+    end,
+  },
+  {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     dependencies = { "nvim-lua/plenary.nvim" },
