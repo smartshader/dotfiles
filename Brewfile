@@ -15,6 +15,7 @@ brew "poetry"
 brew "just"
 brew "zoxide"
 brew "tig"
+brew "gh"
 brew "awscli" if OS.mac?
 brew "aws-sam-cli"
 cask "gcloud-cli" if OS.mac?
