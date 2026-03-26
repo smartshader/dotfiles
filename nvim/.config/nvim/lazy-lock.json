@@ -1,6 +1,6 @@
 {
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
-  "gitsigns.nvim": { "branch": "main", "commit": "5310a7f3a97b6de629269f8935691627a076ae4b" },
+  "gitsigns.nvim": { "branch": "main", "commit": "13588ac50446b12542c922430610eaa330c4e425" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "nvim-tree.lua": { "branch": "master", "commit": "6eaf74c9919d121d2806ac3c20e757e66bd29c31" },
   "nvim-web-devicons": { "branch": "master", "commit": "d7462543c9e366c0d196c7f67a945eaaf5d99414" },
