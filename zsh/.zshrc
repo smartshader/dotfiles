@@ -126,6 +126,15 @@ else
   export STARSHIP_UBUNTU="($(lsb_release -si 2>/dev/null | tr '[:upper:]' '[:lower:]' || echo linux))"
 fi
 
+# clipboard
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  alias cb="impbcopy"
+elif [[ -n "$WAYLAND_DISPLAY" ]]; then
+  alias cb="wl-copy <"
+else
+  alias cb="xclip -selection clipboard -t image/png -i"
+fi
+
 # tools
 alias ls="eza --icons=always"
 alias k=kubectl
