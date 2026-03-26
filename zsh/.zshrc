@@ -138,11 +138,13 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 eval "$(starship init zsh)"
 
-# zoxide (smarter cd)
-eval "$(zoxide init zsh --cmd cd)"
-
 # direnv (per-directory environment variables)
 eval "$(direnv hook zsh)"
 
 # local secrets (not tracked in git)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# zoxide (smarter cd)
+# has to be the last in zshrc
+eval "$(zoxide init zsh --cmd cd)"
+
