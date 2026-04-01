@@ -126,9 +126,11 @@ else
   export STARSHIP_UBUNTU="($(lsb_release -si 2>/dev/null | tr '[:upper:]' '[:lower:]' || echo linux))"
 fi
 
-# clipboard
+# clipboard (copy image to clipboard)
 if [[ "$(uname -s)" == "Darwin" ]]; then
-  alias cb="impbcopy"
+  function cb() {
+    osascript -e 'set the clipboard to (read (POSIX file "'"$(realpath "$1")"'") as «class PNGf»)'
+  }
 elif [[ -n "$WAYLAND_DISPLAY" ]]; then
   alias cb="wl-copy <"
 else
