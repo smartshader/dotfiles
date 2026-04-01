@@ -137,6 +137,7 @@ fi
 
 # tools
 alias ls="eza --icons=always"
+alias grep="grep --color=auto --exclude-dir={.git,node_modules,.terraform,.venv,__pycache__}"
 alias k=kubectl
 alias d=docker
 alias p=podman
