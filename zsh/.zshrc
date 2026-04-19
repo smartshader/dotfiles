@@ -162,3 +162,6 @@ eval "$(direnv hook zsh)"
 # has to be the last in zshrc
 eval "$(zoxide init zsh --cmd cd)"
 
+
+# bun completions
+[ -s "/home/imad/.bun/_bun" ] && source "/home/imad/.bun/_bun"

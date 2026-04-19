@@ -19,7 +19,8 @@ dotfiles/
 │   ├── 35-git.sh              # global gitignore
 │   ├── 40-macos-defaults.sh   # macOS-only system defaults
 │   ├── 45-gcloud.sh           # gcloud CLI on Linux (mac uses brew cask)
-│   └── 50-ghostty.sh          # ghostty on Fedora via COPR (mac uses brew cask, skipped on debian)
+│   ├── 50-ghostty.sh          # ghostty on Fedora via COPR (mac uses brew cask, skipped on debian)
+│   └── 55-slack.sh            # slack on Fedora via flathub
 ├── ghostty/                   # macOS only (terminal emulator)
 ├── git/                       # .gitignore-global
 ├── nvim/                      # neovim config (init.lua)
