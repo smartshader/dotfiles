@@ -22,7 +22,8 @@ dotfiles/
 │   ├── 50-ghostty.sh          # ghostty on Fedora via COPR (mac uses brew cask, skipped on debian)
 │   ├── 55-slack.sh            # slack on Fedora via flathub
 │   ├── 60-zen-browser.sh      # zen browser on Fedora via flathub
-│   └── 65-discord.sh          # discord on Fedora via flathub
+│   ├── 65-discord.sh          # discord on Fedora via flathub
+│   └── 70-speech-dispatcher.sh # speech-dispatcher on Fedora via dnf
 ├── ghostty/                   # macOS only (terminal emulator)
 ├── git/                       # .gitignore-global
 ├── nvim/                      # neovim config (init.lua)
