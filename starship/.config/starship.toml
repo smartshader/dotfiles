@@ -13,7 +13,7 @@ $character"""
 format = "[$env_value]($style) "
 style = "bold red"
 
-[env_var.STARSHIP_UBUNTU]
+[env_var.STARSHIP_LINUX]
 format = "[$env_value]($style) "
 style = "bold purple"
 

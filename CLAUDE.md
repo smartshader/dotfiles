@@ -1,6 +1,6 @@
 # Dotfiles
 
-Cross-platform dotfiles for macOS and Linux (OrbStack Ubuntu VMs). Managed with GNU Stow, installed via Homebrew (both platforms).
+Cross-platform dotfiles for macOS, Fedora workstation, and Linux (OrbStack Ubuntu VMs). Managed with GNU Stow, installed via Homebrew (both platforms).
 
 ## Architecture
 
@@ -9,14 +9,17 @@ dotfiles/
 ├── bootstrap.sh              # orchestrator: detects OS, sources scripts/* in order
 ├── Brewfile                   # shared brew packages, casks gated with `if OS.mac?`
 ├── scripts/                   # numbered install steps (increments of 5 for easy insertion)
-│   ├── 00-prerequisites.sh    # system packages (apt/dnf/xcode), gcloud on linux
+│   ├── 00-prerequisites.sh    # system packages (apt/dnf/xcode)
 │   ├── 05-shell.sh            # set zsh as default, install zsh plugins
 │   ├── 10-homebrew.sh         # install/configure brew, run brew bundle
 │   ├── 15-rust.sh             # rust stable toolchain via rustup
 │   ├── 20-stow.sh             # symlink dotfile packages to $HOME
 │   ├── 25-tmux.sh             # tmux plugin manager (TPM)
 │   ├── 30-claude.sh           # claude code CLI
-│   └── 35-git.sh              # global gitignore
+│   ├── 35-git.sh              # global gitignore
+│   ├── 40-macos-defaults.sh   # macOS-only system defaults
+│   ├── 45-gcloud.sh           # gcloud CLI on Linux (mac uses brew cask)
+│   └── 50-ghostty.sh          # ghostty on Fedora via COPR (mac uses brew cask, skipped on debian)
 ├── ghostty/                   # macOS only (terminal emulator)
 ├── git/                       # .gitignore-global
 ├── nvim/                      # neovim config (init.lua)
@@ -38,7 +41,7 @@ dotfiles/
 ### Stow Packages
 - Each top-level directory (zsh/, starship/, nvim/, etc.) is a stow package
 - Internal structure mirrors `$HOME` (e.g. `starship/.config/starship.toml` → `~/.config/starship.toml`)
-- macOS-only packages (ghostty) are gated in `20-stow.sh`
+- Platform-gated packages (ghostty: macOS + Fedora only) are conditionally appended in `20-stow.sh`
 - Adding a new dotfile: create `<name>/<path-relative-to-home>` and add `<name>` to the `STOW_PACKAGES` array in `20-stow.sh`
 
 ### Brewfile
@@ -47,7 +50,7 @@ dotfiles/
 - Packages not available via Linuxbrew go in the relevant `scripts/` file with apt/dnf fallback (e.g. gcloud in `00-prerequisites.sh`)
 
 ### Starship Prompt
-- OS indicator uses env vars set in `.zshrc`: `STARSHIP_OSX` (bold red) or `STARSHIP_UBUNTU` (bold purple)
+- OS indicator uses env vars set in `.zshrc`: `STARSHIP_OSX` (bold red) or `STARSHIP_LINUX` (bold purple, value is the distro ID from `/etc/os-release`: `ubuntu`, `fedora`, etc.)
 - Uses `$env_var` module, not the built-in `$os` module (which doesn't work reliably)
 
 ### Auto-Update
@@ -55,8 +58,10 @@ dotfiles/
 - Uses `git pull --ff-only` to avoid merge conflicts during auto-update
 
 ### Platform Differences
-- macOS: brew at `/opt/homebrew`, ghostty terminal, gcloud via cask
-- Linux: brew at `/home/linuxbrew/.linuxbrew`, gcloud via apt repo, no ghostty
+- macOS: brew at `/opt/homebrew`, ghostty + gcloud via brew cask
+- Fedora workstation: brew at `/home/linuxbrew/.linuxbrew`, ghostty via `scottames/ghostty` COPR (`scripts/50-ghostty.sh`), gcloud via dnf repo (`scripts/45-gcloud.sh`)
+- Debian/Ubuntu (OrbStack VMs): brew at `/home/linuxbrew/.linuxbrew`, gcloud via apt repo, **no ghostty** (headless VM)
+- Homebrew casks are macOS-only — any macOS-only GUI/binary must use `cask "..." if OS.mac?`, and Linux needs a separate install path (system package manager or script)
 - Machine-local secrets go in `~/.zshrc.local` (not tracked)
 
 ## Secrets Management

@@ -2,7 +2,8 @@ info "Stowing dotfiles..."
 
 STOW_PACKAGES=(zsh starship nvim tmux git)
 
-if [[ "$OS" == "Darwin" ]]; then
+# ghostty runs on macOS and Fedora desktop; skip on debian (OrbStack VMs)
+if [[ "$DISTRO" == "macos" || "$DISTRO" == "fedora" ]]; then
   STOW_PACKAGES+=(ghostty)
 fi
 

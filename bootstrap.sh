@@ -25,6 +25,14 @@ for script in "$DOTFILES_DIR"/scripts/[0-9]*.sh; do
   source "$script"
 done
 
-info "Sourcing ~/.zshrc..."
-source ~/.zshrc
 info "Run 'tmux' then press prefix + I to install tmux plugins"
+
+# on first install $SHELL is still bash (chsh to zsh kicks in on next login) —
+# skip reload and let the user pick up zsh naturally. on subsequent runs $SHELL
+# is already zsh, so re-exec to reload config in the current session.
+if [[ "$SHELL" == */zsh ]]; then
+  info "Reloading zsh..."
+  exec zsh
+else
+  info "Done. Log out and back in to start using zsh."
+fi

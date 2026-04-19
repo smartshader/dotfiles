@@ -123,7 +123,9 @@ export EDITOR="nvim"
 if [[ "$(uname -s)" == "Darwin" ]]; then
   export STARSHIP_OSX="(osx)"
 else
-  export STARSHIP_UBUNTU="($(lsb_release -si 2>/dev/null | tr '[:upper:]' '[:lower:]' || echo linux))"
+  distro=$( (. /etc/os-release 2>/dev/null && echo "$ID") || echo linux)
+  export STARSHIP_LINUX="(${distro:-linux})"
+  unset distro
 fi
 
 # clipboard (copy image to clipboard)

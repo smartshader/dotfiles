@@ -19,9 +19,10 @@ brew "tig"
 brew "gh"
 brew "mermaid-cli"
 brew "tree"
-brew "awscli" if OS.mac?
+brew "awscli"
 brew "aws-sam-cli"
 cask "gcloud-cli" if OS.mac?
 
+cask "ghostty" if OS.mac?
 cask "orbstack" if OS.mac?
 cask "font-mononoki-nerd-font" if OS.mac?
