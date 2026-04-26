@@ -165,3 +165,6 @@ eval "$(zoxide init zsh --cmd cd)"
 
 # bun completions
 [ -s "/home/imad/.bun/_bun" ] && source "/home/imad/.bun/_bun"
+
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/home/imad/.lmstudio/bin"

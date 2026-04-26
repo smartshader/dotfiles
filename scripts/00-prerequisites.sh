@@ -7,7 +7,7 @@ case "$DISTRO" in
     ;;
   fedora)
     sudo dnf group install -y development-tools
-    sudo dnf install -y curl git zsh unzip net-tools lsof procps-ng
+    sudo dnf install -y curl git zsh unzip net-tools lsof procps-ng pipx
     ;;
   macos)
     if ! xcode-select -p &>/dev/null; then
