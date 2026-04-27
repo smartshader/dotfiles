@@ -3,11 +3,11 @@ info "Installing system prerequisites..."
 case "$DISTRO" in
   debian)
     sudo apt-get update -qq
-    sudo apt-get install -y -qq build-essential curl git zsh ncurses-term apt-transport-https gnupg unzip net-tools lsof
+    sudo apt-get install -y -qq build-essential curl git git-lfs zsh ncurses-term apt-transport-https gnupg unzip net-tools lsof
     ;;
   fedora)
     sudo dnf group install -y development-tools
-    sudo dnf install -y curl git zsh unzip net-tools lsof procps-ng pipx dwarves
+    sudo dnf install -y curl git git-lfs zsh unzip net-tools lsof procps-ng pipx dwarves
     ;;
   macos)
     if ! xcode-select -p &>/dev/null; then
