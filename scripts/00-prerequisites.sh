@@ -7,7 +7,8 @@ case "$DISTRO" in
     ;;
   fedora)
     sudo dnf group install -y development-tools
-    sudo dnf install -y curl git git-lfs zsh unzip net-tools lsof procps-ng pipx dwarves
+    sudo dnf install -y curl git git-lfs zsh unzip net-tools lsof procps-ng pipx dwarves podman-docker
+    sudo touch /etc/containers/nodocker
     ;;
   macos)
     if ! xcode-select -p &>/dev/null; then
