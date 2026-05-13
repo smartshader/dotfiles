@@ -25,7 +25,8 @@ dotfiles/
 │   ├── 65-discord.sh          # discord on Fedora via flathub
 │   ├── 70-speech-dispatcher.sh # speech-dispatcher on Fedora via dnf
 │   ├── 75-openconnect-sso.sh  # openconnect-sso on Fedora via pipx
-│   └── 80-audio.sh            # pavucontrol/easyeffects/rnnoise on Fedora via dnf
+│   ├── 80-audio.sh            # pavucontrol/easyeffects/rnnoise on Fedora via dnf
+│   └── 85-vscode.sh           # VS Code on Fedora via Microsoft dnf repo
 ├── ghostty/                   # macOS only (terminal emulator)
 ├── git/                       # .gitignore-global
 ├── nvim/                      # neovim config (init.lua)

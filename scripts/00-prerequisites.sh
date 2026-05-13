@@ -8,6 +8,7 @@ case "$DISTRO" in
   fedora)
     sudo dnf group install -y development-tools
     sudo dnf install -y curl git git-lfs zsh unzip net-tools lsof procps-ng pipx dwarves podman-docker
+    sudo dnf install -y webkit2gtk4.1-devel openssl-devel wget file libappindicator-gtk3-devel librsvg2-devel
     sudo touch /etc/containers/nodocker
     ;;
   macos)
