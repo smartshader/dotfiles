@@ -92,7 +92,30 @@ function gp() {
 
 # tmux
 alias ts="tmux list-sessions"
-alias ta="tmux attach -t"
+
+function ta() {
+    local name
+    if [[ -n "$1" ]]; then
+        name="$1"
+    else
+        local git_root
+        git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+        name=$(basename "${git_root:-$PWD}")
+    fi
+    tmux attach -t "$name"
+}
+
+function tn() {
+    local name
+    if [[ -n "$1" ]]; then
+        name="$1"
+    else
+        local git_root
+        git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+        name=$(basename "${git_root:-$PWD}")
+    fi
+    tmux new-session -A -s "$name"
+}
 
 # aws
 function iot-endpoint() {
