@@ -31,3 +31,6 @@ Thumbs.db
 
 # AI agents
 CLAUDE.md
+.claude/
+_bmad/
+_bmad-output/
