@@ -2,7 +2,16 @@
 DOTFILES_DIR="$HOME/Projects/personal/dotfiles"
 
 function dotfiles-update() {
-  cd "$DOTFILES_DIR" && git pull --ff-only origin main && bash "$DOTFILES_DIR/bootstrap.sh"
+  cd "$DOTFILES_DIR"
+  git fetch origin main --quiet
+  local local_ref remote_ref
+  local_ref=$(git rev-parse HEAD)
+  remote_ref=$(git rev-parse origin/main)
+  if [[ "$local_ref" == "$remote_ref" ]]; then
+    echo "Dotfiles already up to date."
+  else
+    git pull --ff-only origin main && bash "$DOTFILES_DIR/bootstrap.sh"
+  fi
   cd - > /dev/null
 }
 
