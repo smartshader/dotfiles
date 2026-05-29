@@ -1,5 +1,11 @@
-# auto-update dotfiles
+# dotfiles
 DOTFILES_DIR="$HOME/Projects/personal/dotfiles"
+
+function dotfiles-update() {
+  cd "$DOTFILES_DIR" && git pull --ff-only origin main && bash "$DOTFILES_DIR/bootstrap.sh"
+  cd - > /dev/null
+}
+
 if [[ -d "$DOTFILES_DIR/.git" ]]; then
   (
     cd "$DOTFILES_DIR"
