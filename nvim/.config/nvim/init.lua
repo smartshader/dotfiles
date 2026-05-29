@@ -158,6 +158,16 @@ require("lazy").setup({
     end,
   },
   {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSInstall markdown markdown_inline",
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+    ft = { "markdown" },
+    opts = {},
+  },
+  {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     dependencies = { "nvim-lua/plenary.nvim" },

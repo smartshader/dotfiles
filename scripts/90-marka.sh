@@ -16,7 +16,7 @@ if [[ -z "$latest_tag" ]]; then
 fi
 
 latest_version="${latest_tag#v}"
-installed_version=$(rpm -q --queryformat '%{VERSION}' marka 2>/dev/null || rpm -q --queryformat '%{VERSION}' markamd 2>/dev/null || true)
+installed_version=$(rpm -q --queryformat '%{VERSION}' marka-md 2>/dev/null || rpm -q --queryformat '%{VERSION}' marka 2>/dev/null || true)
 
 if [[ -n "$installed_version" && "$installed_version" == "$latest_version" ]]; then
     info "marka $installed_version is already up to date"
