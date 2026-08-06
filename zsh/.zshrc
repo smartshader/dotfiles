@@ -206,3 +206,6 @@ eval "$(zoxide init zsh --cmd cd)"
 
 # Added by LM Studio CLI tool (lms)
 export PATH="$PATH:/home/imad/.lmstudio/bin"
+
+# GitHub Copilot CLI: always start in autopilot mode with full access to ~/Projects
+alias copilot="copilot --autopilot --allow-all --add-dir ~/Projects"
