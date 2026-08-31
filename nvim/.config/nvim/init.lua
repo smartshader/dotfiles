@@ -159,6 +159,8 @@ require("lazy").setup({
   },
   {
     "nvim-treesitter/nvim-treesitter",
+    -- master does not support Neovim 0.12; pin main so a stale origin/HEAD can't drift it back
+    branch = "main",
     build = ":TSInstall markdown markdown_inline",
   },
   {
