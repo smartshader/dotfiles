@@ -11,5 +11,8 @@ else
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+info "Trusting third-party taps..."
+brew trust --tap neovim/neovim supabase/tap
+
 info "Installing brew packages from Brewfile..."
 brew bundle --file="$DOTFILES_DIR/Brewfile"

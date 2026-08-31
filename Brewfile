@@ -22,6 +22,7 @@ brew "gh"
 brew "git-lfs"
 brew "mermaid-cli"
 brew "tree"
+brew "herdr"
 brew "tree-sitter-cli" if OS.mac?
 brew "awscli"
 brew "aws-sam-cli"
