@@ -52,6 +52,7 @@ require("lazy").setup({
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
+      local workspace_dirs = require("workspace_dirs")
       require("nvim-tree").setup({
         filters = {
           git_ignored = false,
@@ -61,6 +62,19 @@ require("lazy").setup({
         },
         renderer = {
           highlight_git = "all",
+          decorators = {
+            "Git",
+            "Open",
+            "Hidden",
+            "Modified",
+            "Bookmark",
+            "Diagnostics",
+            "Copied",
+            workspace_dirs.Directories,
+            workspace_dirs.Files,
+            workspace_dirs.FileIcons,
+            "Cut",
+          },
           icons = {
             git_placement = "after",
             glyphs = {
