@@ -53,6 +53,9 @@ require("lazy").setup({
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("nvim-tree").setup({
+        filters = {
+          git_ignored = false,
+        },
         git = {
           enable = true,
         },
@@ -110,6 +113,7 @@ require("lazy").setup({
           vim.keymap.set("n", "R", api.tree.reload, opts("Refresh"))
           vim.keymap.set("n", "y", api.fs.copy.filename, opts("Copy Name"))
           vim.keymap.set("n", "H", api.tree.toggle_hidden_filter, opts("Toggle Hidden"))
+          vim.keymap.set("n", "I", api.tree.toggle_gitignore_filter, opts("Toggle Git Ignored"))
         end,
       })
     end,
@@ -188,6 +192,9 @@ require("lazy").setup({
 -- keymaps
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files)
+vim.keymap.set("n", "<leader>fa", function()
+  builtin.find_files({ no_ignore = true, hidden = true })
+end)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep)
 vim.keymap.set("n", "<leader>fb", builtin.buffers)
 vim.keymap.set("n", "<leader>fr", builtin.oldfiles)
